@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appId": {
+      "value": "<client-id-from-previous-step>"
+    },
+    "appType": {
+      "value": "UserAssignedMSI"
+    },
+    "tenantId": {
+      "value": "<azure-ad-tenant-id>"
+    },
+    "existingUserAssignedMSIName": {
+      "value": "botIdName"
+    },
+    "existingUserAssignedMSIResourceGroupName": {
+      "value": "rg-bot"
+    },
+    "botId": {
+      "value": "twilio-appointment-bot-test"
+    },
+    "newWebAppName": {
+      "value": "twilio-appointment-bot-app-service"
+    },
+    "existingAppServicePlan": {
+      "value": "AppSrvPlan-bot"
+    },
+    "appServicePlanLocation": {
+      "value": "<region-location-name>"
+    }
+  }
+}
