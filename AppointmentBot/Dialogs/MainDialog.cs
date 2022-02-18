@@ -71,7 +71,7 @@ namespace AppointmentBot.Dialogs
             switch (luisResult.TopIntent().intent)
             {
                 case DoctorBooking.Intent.BookAppointment:
-                    var validDoctor = await validatDoctors(stepContext.Context, luisResult, cancellationToken);
+                    var validDoctor = await ValidateDoctors(stepContext.Context, luisResult, cancellationToken);
                     if (!validDoctor)
                     {
                         return await stepContext.ReplaceDialogAsync(InitialDialogId, "Doctor Peter, Susan and Kathy are available?", cancellationToken);
@@ -107,7 +107,7 @@ namespace AppointmentBot.Dialogs
         }
 
         // Shows a warning if the doctor is not specified or doctor entity values can't be mapped to a canonical item in the Airport.
-        private static async Task<Boolean> validatDoctors(ITurnContext context, DoctorBooking luisResult, CancellationToken cancellationToken)
+        private static async Task<Boolean> ValidateDoctors(ITurnContext context, DoctorBooking luisResult, CancellationToken cancellationToken)
         {
             var doctorChoosen = luisResult.Doctor;
             var noDoctor = string.IsNullOrEmpty(doctorChoosen);
