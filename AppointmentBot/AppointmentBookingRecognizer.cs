@@ -21,7 +21,7 @@ namespace AppointmentBot
                 var luisApplication = new LuisApplication(
                     configuration["LuisAppId"],
                     configuration["LuisAPIKey"],
-                    "https://" + configuration["LuisAPIHostName"]);
+                    configuration["LuisAPIHostName"]);
                 // Set the recognizer options depending on which endpoint version you want to use.
                 // More details can be found in https://docs.microsoft.com/en-gb/azure/cognitive-services/luis/luis-migration-api-v3
                 var recognizerOptions = new LuisRecognizerOptionsV3(luisApplication)
