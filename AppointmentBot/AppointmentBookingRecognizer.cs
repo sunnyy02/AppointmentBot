@@ -15,13 +15,13 @@ namespace AppointmentBot
 
         public AppointmentBookingRecognizer(IConfiguration configuration)
         {
-            var luisIsConfigured = !string.IsNullOrEmpty(configuration["LuisAppId"]) && !string.IsNullOrEmpty(configuration["LuisAPIKey"]) && !string.IsNullOrEmpty(configuration["LuisAPIHostName"]);
+            var luisIsConfigured = !string.IsNullOrEmpty(configuration["LuisAppId"]) && !string.IsNullOrEmpty(configuration["LuisApiKey"]) && !string.IsNullOrEmpty(configuration["LuisApiEndpointUrl"]);
             if (luisIsConfigured)
             {
                 var luisApplication = new LuisApplication(
                     configuration["LuisAppId"],
-                    configuration["LuisAPIKey"],
-                    configuration["LuisAPIHostName"]);
+                    configuration["LuisApiKey"],
+                    configuration["LuisApiEndpointUrl"]);
                 // Set the recognizer options depending on which endpoint version you want to use.
                 // More details can be found in https://docs.microsoft.com/en-gb/azure/cognitive-services/luis/luis-migration-api-v3
                 var recognizerOptions = new LuisRecognizerOptionsV3(luisApplication)
