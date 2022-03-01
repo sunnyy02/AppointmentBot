@@ -82,7 +82,7 @@ namespace AppointmentBot.Dialogs
                     {
                         // Get destination and origin from the composite entities arrays.
                         Doctor = luisResult.Doctor,
-                        AppointmenDate = luisResult.AppointmentDate,
+                        AppointmentDate = luisResult.AppointmentDate,
                     };
 
                     // Run the AppointmentBookingDialog giving it whatever details we have from the LUIS call, it will fill out the remainder.
@@ -131,7 +131,7 @@ namespace AppointmentBot.Dialogs
 
                 // If the call to the booking service was successful tell the user.
 
-                var timeProperty = new TimexProperty(result.AppointmenDate);
+                var timeProperty = new TimexProperty(result.AppointmentDate);
                 var appointmentDateMsg = timeProperty.ToNaturalLanguage(DateTime.Now);
                 var messageText = $"I have you booked to Doctor {result.Doctor} on {appointmentDateMsg}";
                 var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);

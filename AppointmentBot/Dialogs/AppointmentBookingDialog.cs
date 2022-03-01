@@ -51,23 +51,23 @@ namespace AppointmentBot.Dialogs
         {
             var bookingDetails = (AppointmentDetails)stepContext.Options;
 
-            bookingDetails.AppointmenDate = (string)stepContext.Result;
+            bookingDetails.AppointmentDate = (string)stepContext.Result;
 
-            if (bookingDetails.AppointmenDate == null || IsAmbiguous(bookingDetails.AppointmenDate))
+            if (bookingDetails.AppointmentDate == null || IsAmbiguous(bookingDetails.AppointmentDate))
             {
-                return await stepContext.BeginDialogAsync(nameof(DateResolverDialog), bookingDetails.AppointmenDate, cancellationToken);
+                return await stepContext.BeginDialogAsync(nameof(DateResolverDialog), bookingDetails.AppointmentDate, cancellationToken);
             }
 
-            return await stepContext.NextAsync(bookingDetails.AppointmenDate, cancellationToken);
+            return await stepContext.NextAsync(bookingDetails.AppointmentDate, cancellationToken);
         }
 
         private async Task<DialogTurnResult> ConfirmStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var bookingDetails = (AppointmentDetails)stepContext.Options;
 
-            bookingDetails.AppointmenDate = (string)stepContext.Result;
+            bookingDetails.AppointmentDate = (string)stepContext.Result;
 
-            var messageText = $"Please confirm, I have you book with Doctor: {bookingDetails.Doctor} on: {bookingDetails.AppointmenDate}. Is this correct?";
+            var messageText = $"Please confirm, I have you book with Doctor: {bookingDetails.Doctor} on: {bookingDetails.AppointmentDate}. Is this correct?";
             var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
 
             return await stepContext.PromptAsync(nameof(ConfirmPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);

@@ -6,6 +6,6 @@ namespace AppointmentBot
     {
         public string Doctor { get; set; }
 
-        public string AppointmenDate { get; set; }
+        public string AppointmentDate { get; set; }
     }
 }
